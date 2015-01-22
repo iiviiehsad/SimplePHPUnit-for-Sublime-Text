@@ -19,6 +19,9 @@ class NoOpenProjectException(Exception):
 class InvalidFileTypeException(Exception):
     pass
 
+class NoActiveFileException(Exception):
+    pass
+
 
 class ShowInPanel:
     def __init__(self, window):
@@ -42,7 +45,7 @@ class SimplePhpUnitCommand(sublime_plugin.WindowCommand):
     def run(self, *args, **kwargs):
         try:
             self.build_and_run_phpunit_command(args, kwargs)
-        except (IOError, NoOpenProjectException, InvalidFileTypeException) as e:
+        except (IOError, NoOpenProjectException, InvalidFileTypeException, NoActiveFileException) as e:
             sublime.status_message(str(e))
             
 
@@ -57,6 +60,8 @@ class SimplePhpUnitCommand(sublime_plugin.WindowCommand):
 
             if kwargs.get('test_current_file'):
                 current_filename = self.window.active_view().file_name()
+                if current_filename is None:
+                    raise NoActiveFileException('A file must be open in the editor to run PHPUnit on the current file')
                 if current_filename.endswith('.php') is False:
                     raise InvalidFileTypeException('PHPUnit can only be run on PHP files')
                 self.file_to_test = current_filename
