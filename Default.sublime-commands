@@ -1,20 +1,14 @@
 [
     {
         "caption": "PHPUnit: Run",
-        "command": "simple_php_unit"
+        "command": "phpunit"
     },
     {
         "caption": "PHPUnit: Test current file",
-        "command": "simple_php_unit",
-        "args": {
-            "test_current_file": true
-        }
+        "command": "phpunit_current_file",
     },
     {
         "caption": "PHPUnit: Run with custom args",
-        "command": "simple_php_unit",
-        "args": {
-            "custom_args": true
-        }
+        "command": "phpunit_custom",
     }
 ]
