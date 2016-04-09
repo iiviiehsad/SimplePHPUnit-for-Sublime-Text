@@ -29,25 +29,26 @@ Opens a new input window which allows user to enter PHPUnit arguments to be adde
 Also you can use the `Tools --> PHPUnit...` menu item, or set up custom keybindings
 
 ### Keybinding:
-You can use command `simple_php_unit` for your keybinding.
+You can use the following commands for your keybinding:
+
+- `phpunit`
+- `phpunit_current_file`
+- `phpunit_custom`
 
 **Examples**:
 ```json
 {
 	"keys": ["ctrl+alt+t"],
-	"command": "simple_php_unit"
+	"command": "phpunit"
 },
 {
 	"keys": ["super+ctrl+alt+t"],
-	"command": "simple_php_unit",
-	"args": {
-        "test_current_file": true
-    }
+	"command": "phpunit_current_file"
 }
 ```
 
 ### Notes:
-- Latest version of the plugin built and tested using [PHPUnit 4.4](https://phpunit.de/).
+- Latest version of the plugin built and tested using [PHPUnit 5.3.1](https://phpunit.de/).
 - If your projects use XML configuration files for PHPUnit, be sure to specify them in your user settings.
 - Enable automatic output panel display by adding `"show_panel_on_build": true` to your user settings or use the `Tools --> Build Results --> Show Build Results` menu item to view results.
 
